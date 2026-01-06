@@ -1,0 +1,40 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<persistence xmlns="http://xmlns.jcp.org/xml/ns/persistence"
+             xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+             xsi:schemaLocation="http://xmlns.jcp.org/xml/ns/persistence http://xmlns.jcp.org/xml/ns/persistence/persistence_2_2.xsd"
+             version="2.2">
+
+  <persistence-unit name="alohcmutePU" transaction-type="RESOURCE_LOCAL">
+    <provider>org.hibernate.jpa.HibernatePersistenceProvider</provider>
+    <class>com.alohcmute.entity.User</class>
+    <class>com.alohcmute.entity.Post</class>
+    <class>com.alohcmute.entity.Comment</class>
+    <class>com.alohcmute.entity.Reaction</class>
+    <class>com.alohcmute.entity.Video</class>
+    <class>com.alohcmute.entity.VideoReaction</class>
+    <class>com.alohcmute.entity.VideoComment</class>
+    <class>com.alohcmute.entity.ChatMessage</class>
+    <class>com.alohcmute.entity.DirectMessage</class>
+    <class>com.alohcmute.entity.Report</class>
+    <class>com.alohcmute.entity.Notification</class>
+    <class>com.alohcmute.entity.Follow</class>
+    <properties>
+      <property name="javax.persistence.jdbc.url" value="jdbc:sqlserver://DESKTOP-IMSJ193:1433;databaseName=LTWEBTUXA1;encrypt=true;trustServerCertificate=true;characterEncoding=UTF-8;useUnicode=true"/>
+      <property name="javax.persistence.jdbc.driver" value="com.microsoft.sqlserver.jdbc.SQLServerDriver"/>
+      <property name="javax.persistence.jdbc.user" value="sa"/>
+      <property name="javax.persistence.jdbc.password" value="Ad12345678!"/>
+
+      <property name="hibernate.dialect" value="org.hibernate.dialect.SQLServerDialect"/>
+      <property name="hibernate.hbm2ddl.auto" value="update"/>
+      <property name="hibernate.show_sql" value="true"/>
+      <property name="hibernate.format_sql" value="true"/>
+      <property name="hibernate.hbm2ddl.drop_constraint" value="false"/>
+      
+      <!-- Hibernate charset and encoding settings -->
+      <property name="hibernate.connection.characterEncoding" value="UTF-8"/>
+      <property name="hibernate.connection.useUnicode" value="true"/>
+      <property name="hibernate.connection.charSet" value="UTF-8"/>
+    </properties>
+  </persistence-unit>
+
+</persistence>

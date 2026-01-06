@@ -1,0 +1,107 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<web-app xmlns="http://xmlns.jcp.org/xml/ns/javaee"
+         xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+         xsi:schemaLocation="http://xmlns.jcp.org/xml/ns/javaee http://xmlns.jcp.org/xml/ns/javaee/web-app_4_0.xsd"
+         version="4.0">
+
+  <display-name>ALOHCMUTE</display-name>
+
+  <!-- UTF-8 Character Encoding Filter -->
+  <filter>
+    <filter-name>encodingFilter</filter-name>
+    <filter-class>org.apache.catalina.filters.SetCharacterEncodingFilter</filter-class>
+    <init-param>
+      <param-name>encoding</param-name>
+      <param-value>UTF-8</param-value>
+    </init-param>
+    <init-param>
+      <param-name>ignore</param-name>
+      <param-value>false</param-value>
+    </init-param>
+  </filter>
+  <filter-mapping>
+    <filter-name>encodingFilter</filter-name>
+    <url-pattern>/*</url-pattern>
+  </filter-mapping>
+
+  <!-- Sitemesh filter -->
+  <filter>
+    <filter-name>sitemesh</filter-name>
+    <filter-class>com.opensymphony.module.sitemesh.filter.PageFilter</filter-class>
+  </filter>
+  <filter-mapping>
+    <filter-name>sitemesh</filter-name>
+    <url-pattern>/*</url-pattern>
+  </filter-mapping>
+
+  <!-- UTF-8 charset config for JSPs -->
+  <jsp-config>
+    <jsp-property-group>
+      <url-pattern>*.jsp</url-pattern>
+      <page-encoding>UTF-8</page-encoding>
+      <include-prelude>/WEB-INF/jspf/encoding.jspf</include-prelude>
+    </jsp-property-group>
+  </jsp-config>
+
+  <!-- Explicit servlet mapping for ChatServlet (ensure available on older containers) -->
+  <servlet>
+    <servlet-name>ChatServlet</servlet-name>
+    <servlet-class>com.alohcmute.servlet.ChatServlet</servlet-class>
+  </servlet>
+  <servlet-mapping>
+    <servlet-name>ChatServlet</servlet-name>
+    <url-pattern>/user/chat</url-pattern>
+  </servlet-mapping>
+  <servlet>
+    <servlet-name>DirectMessageServlet</servlet-name>
+    <servlet-class>com.alohcmute.servlet.DirectMessageServlet</servlet-class>
+  </servlet>
+  <servlet-mapping>
+    <servlet-name>DirectMessageServlet</servlet-name>
+    <url-pattern>/user/messages</url-pattern>
+  </servlet-mapping>
+
+  <!-- Report System Servlets -->
+  <servlet>
+    <servlet-name>ReportServlet</servlet-name>
+    <servlet-class>com.alohcmute.servlet.ReportServlet</servlet-class>
+  </servlet>
+  <servlet-mapping>
+    <servlet-name>ReportServlet</servlet-name>
+    <url-pattern>/report/submit</url-pattern>
+  </servlet-mapping>
+
+  <servlet>
+    <servlet-name>ModeratorServlet</servlet-name>
+    <servlet-class>com.alohcmute.servlet.ModeratorServlet</servlet-class>
+  </servlet>
+  <servlet-mapping>
+    <servlet-name>ModeratorServlet</servlet-name>
+    <url-pattern>/moderator/queue</url-pattern>
+  </servlet-mapping>
+
+  <!-- Seed Moderators Servlet -->
+  <servlet>
+    <servlet-name>SeedModeratorServlet</servlet-name>
+    <servlet-class>com.alohcmute.servlet.SeedModeratorServlet</servlet-class>
+  </servlet>
+  <servlet-mapping>
+    <servlet-name>SeedModeratorServlet</servlet-name>
+    <url-pattern>/admin/seed-moderators</url-pattern>
+  </servlet-mapping>
+
+  <!-- Moderator Access Filter -->
+  <filter>
+    <filter-name>ModeratorFilter</filter-name>
+    <filter-class>com.alohcmute.filter.ModeratorFilter</filter-class>
+  </filter>
+  <filter-mapping>
+    <filter-name>ModeratorFilter</filter-name>
+    <url-pattern>/moderator/*</url-pattern>
+  </filter-mapping>
+
+  <welcome-file-list>
+    <welcome-file>index.jsp</welcome-file>
+  </welcome-file-list>
+
+</web-app>

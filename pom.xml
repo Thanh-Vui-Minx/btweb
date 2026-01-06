@@ -134,11 +134,22 @@
           <failOnMissingWebXml>false</failOnMissingWebXml>
         </configuration>
       </plugin>
+      <!-- Tomcat plugin for development -->
+      <plugin>
+        <groupId>org.apache.tomcat.maven</groupId>
+        <artifactId>tomcat7-maven-plugin</artifactId>
+        <version>2.2</version>
+        <configuration>
+          <port>8080</port>
+          <path>/alohcmute</path>
+        </configuration>
+      </plugin>
+      
       <!-- Cargo plugin: download and run Tomcat for local testing -->
       <plugin>
         <groupId>org.codehaus.cargo</groupId>
         <artifactId>cargo-maven2-plugin</artifactId>
-        <version>1.9.9</version>
+        <version>1.10.13</version>
         <configuration>
           <container>
             <!-- Use Tomcat 9 installed container; plugin will download the distribution -->
